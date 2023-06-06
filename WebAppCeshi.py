@@ -109,15 +109,14 @@ AST = st.sidebar.number_input(label='AST', min_value=0.00,
 
 
 features = {'Age': Age, 'Gender': Gender,'BMI':BMI,
-            'Smokeing22': Smokeing11, 'Drinking': Drinking, 
+            'Smokeing': Smokeing11, 'Drinking': Drinking, 
             'Diabetes': Diabetes, 'Heart.disease': Heart_disease,
             'WBC': WBC, 'RBC': RBC,
             'PLT': PLT, 'HGB': HGB,
             'HCT': HCT, 'Neu': Neu,
             'PT': PT, 'Fib': Fib,
             'ALB': ALB, 'AST': AST
-            }##'Age'引号里面才是数据集对应的输入特征名，显示在input data数据框中，可以自定义字段名
-
+            }##'Age'引号里面才是数据集对应的输入特征名，显示在input data数据框中
 features_df = pd.DataFrame([features])
 #显示输入的特征
 st.table(features_df)
