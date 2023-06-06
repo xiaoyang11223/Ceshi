@@ -32,7 +32,7 @@ def option_name(x):
         return "no"
     if x == 1:
         return "yes"
-
+gender_options = {0: "male", 1: "female"}
 def option_name1(x):
     if x == 0:
         return "male"
@@ -48,14 +48,15 @@ model = joblib.load('catb.pkl')##导入相应的模型___此模型是D盘商单�
 st.sidebar.title("Features")
 
 # 设置各项特征的输入范围和选项，必须按数据集原先的指标顺序输入
-Age = st.sidebar.selectbox(label='Age', options=[1,2,3,4,5,6], index=1)#label里面是标签，可以随意更改，会显示在输入框中
-Gender = st.sidebar.selectbox(label='Gender', options=[0, 1], format_func=lambda x: option_name1(x), index=0)
+Age = st.sidebar.selectbox(label='Age', options=[1,2,3,4,5,6], index=1)#label里面是标签，可以随意更改，会显示在左侧输入框中
+Gender = st.sidebar.selectbox(label='Gender', options=list(gender_options.keys()), format_func=lambda x: gender_options[x], index=0)
+#Gender = st.sidebar.selectbox(label='Gender', options=[0, 1], format_func=lambda x: option_name1(x), index=0)
 BMI = st.sidebar.number_input(label='BMI', min_value=15.20,
                                   max_value=38.90,
                                   value=15.20,
                                   step=0.01)
 Smokeing11 = st.sidebar.selectbox(label='Smoke', options=[0,1], format_func=lambda x: option_name(x), index=0)##Smokeing11等号=前面的字段不影响页面输出，只要后面与数据集对应就行
-Drinking = st.sidebar.selectbox(label='Drink', options=[0,1], format_func=lambda x: option_name(x), index=0)
+Drinking = st.sidebar.selectbox(label='Drink', options=[0,1], format_func=lambda x: option_name(x), index=0)#index=0表示默认显示0
 Diabetes = st.sidebar.selectbox(label='Diabetes', options=[0,1], format_func=lambda x: option_name(x), index=0)
 Heart_disease = st.sidebar.selectbox(label='Heart.disease', options=[0,1], format_func=lambda x: option_name(x), index=0)
 
@@ -117,7 +118,7 @@ features = {'Age': Age, 'Gender': Gender,'BMI':BMI,
             'HCT': HCT, 'Neu': Neu,
             'PT': PT, 'Fib': Fib,
             'ALB': ALB, 'AST': AST
-            }##'Age'引号里面才是数据集对应的输入特征名
+            }##'Age'引号里面才是数据集对应的输入特征名，显示在input data数据框中，可以自定义字段名
 
 features_df = pd.DataFrame([features])
 #显示输入的特征
