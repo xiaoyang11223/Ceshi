@@ -32,7 +32,6 @@ def option_name(x):
         return "no"
     if x == 1:
         return "yes"
-gender_options = {0: "male", 1: "female"}
 def option_name1(x):
     if x == 0:
         return "male"
@@ -49,8 +48,7 @@ st.sidebar.title("Features")
 
 # 设置各项特征的输入范围和选项，必须按数据集原先的指标顺序输入
 Age = st.sidebar.selectbox(label='Age', options=[1,2,3,4,5,6], index=1)#label里面是标签，可以随意更改，会显示在左侧输入框中
-Gender = st.sidebar.selectbox(label='Gender', options=list(gender_options.keys()), format_func=lambda x: gender_options[x], index=0)
-#Gender = st.sidebar.selectbox(label='Gender', options=[0, 1], format_func=lambda x: option_name1(x), index=0)
+Gender = st.sidebar.selectbox(label='Gender', options=[0, 1], format_func=lambda x: option_name1(x), index=0)
 BMI = st.sidebar.number_input(label='BMI', min_value=15.20,
                                   max_value=38.90,
                                   value=15.20,
