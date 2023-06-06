@@ -48,13 +48,13 @@ model = joblib.load('catb.pkl')##导入相应的模型___此模型是D盘商单�
 st.sidebar.title("Features")
 
 # 设置各项特征的输入范围和选项，必须按数据集原先的指标顺序输入
-Age = st.sidebar.selectbox(label='Age', options=[1,2,3,4,5,6], index=1)#label里面是标签，可以随意更改
+Age = st.sidebar.selectbox(label='Age', options=[1,2,3,4,5,6], index=1)#label里面是标签，可以随意更改，会显示在输入框中
 Gender = st.sidebar.selectbox(label='Gender', options=[0, 1], format_func=lambda x: option_name1(x), index=0)
 BMI = st.sidebar.number_input(label='BMI', min_value=15.20,
                                   max_value=38.90,
                                   value=15.20,
                                   step=0.01)
-Smokeing11 = st.sidebar.selectbox(label='Smoke', options=[0,1], format_func=lambda x: option_name(x), index=0)
+Smokeing11 = st.sidebar.selectbox(label='Smoke', options=[0,1], format_func=lambda x: option_name(x), index=0)##Smokeing11等号=前面的字段不影响页面输出，只要后面与数据集对应就行
 Drinking = st.sidebar.selectbox(label='Drink', options=[0,1], format_func=lambda x: option_name(x), index=0)
 Diabetes = st.sidebar.selectbox(label='Diabetes', options=[0,1], format_func=lambda x: option_name(x), index=0)
 Heart_disease = st.sidebar.selectbox(label='Heart.disease', options=[0,1], format_func=lambda x: option_name(x), index=0)
@@ -110,7 +110,7 @@ AST = st.sidebar.number_input(label='AST', min_value=0.00,
 
 
 features = {'Age': Age, 'Gender': Gender,'BMI':BMI,
-            'Smokeing': Smokeing11, 'Drinking': Drinking, 
+            'Smokeing22': Smokeing11, 'Drinking': Drinking, 
             'Diabetes': Diabetes, 'Heart.disease': Heart_disease,
             'WBC': WBC, 'RBC': RBC,
             'PLT': PLT, 'HGB': HGB,
