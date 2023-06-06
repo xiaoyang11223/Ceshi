@@ -115,7 +115,7 @@ features_df = pd.DataFrame([features])
 #显示输入的特征
 st.table(features_df)
 
-from skimage import io,data
+
 
 #显示预测结果与shap解释图
 if st.button('Predict'):
