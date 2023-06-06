@@ -32,18 +32,24 @@ def option_name(x):
         return "no"
     if x == 1:
         return "yes"
+
+def option_name1(x):
+    if x == 0:
+        return "male"
+    if x == 1:
+        return "female"
 @st.cache
 def predict_quality(model, df):
     y_pred = model.predict(df, prediction_type='Probability')
     return y_pred[:, 1]
 
 # 导入模型
-model = joblib.load('catb.pkl')##导入相应的模型
+model = joblib.load('catb.pkl')##导入相应的模型___此模型是D盘商单文件夹里面的模型（18个特征）
 st.sidebar.title("Features")
 
 # 设置各项特征的输入范围和选项
 Age = st.sidebar.selectbox(label='Age', options=[1,2,3,4,5,6], index=1)#label里面是标签，可以随意更改
-Gender = st.sidebar.selectbox(label='Gender', options=[0, 1], format_func=lambda x: option_name(x), index=0)
+Gender = st.sidebar.selectbox(label='Gender', options=[0, 1], format_func=lambda x: option_name1(x), index=0)
 BMI = st.sidebar.number_input(label='BMI', min_value=15.20,
                                   max_value=38.90,
                                   value=15.20,
