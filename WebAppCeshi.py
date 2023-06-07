@@ -119,13 +119,9 @@ features = {'Age': Age, 'Gender': Gender,'BMI':BMI,
             }##'Age'引号里面才是数据集对应的输入特征名，显示在input data数据框中
 features_df = pd.DataFrame([features])
 #显示输入的特征
-# 对连续变量列保留两位小数
-decimal_cols = ['BMI', 'WBC', 'RBC', 'PLT', 'HGB', 'HCT', 'Neu', 'PT', 'Fib', 'ALB', 'AST']
-features_df[decimal_cols] = features_df[decimal_cols].round(2)
 
-# 显示带有两位小数的特征表格
+
 st.table(features_df)
-#st.table(features_df)
 
 
 
@@ -133,7 +129,7 @@ st.table(features_df)
 if st.button('Predict'):
     prediction = predict_quality(model, features_df)
     st.write("the probability of Readmission:")
-    st.success(round(prediction[0], 4))
+    st.success(round(prediction[0], 2))
     explainer = shap.TreeExplainer(model)
     shap_values = explainer.shap_values(features_df)
     shap.force_plot(explainer.expected_value, shap_values[0], features_df, matplotlib=True, show=False)
