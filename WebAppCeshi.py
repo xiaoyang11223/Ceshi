@@ -119,7 +119,13 @@ features = {'Age': Age, 'Gender': Gender,'BMI':BMI,
             }##'Age'引号里面才是数据集对应的输入特征名，显示在input data数据框中
 features_df = pd.DataFrame([features])
 #显示输入的特征
+# 对连续变量列保留两位小数
+decimal_cols = ['BMI', 'WBC', 'RBC', 'PLT', 'HGB', 'HCT', 'Neu', 'PT', 'Fib', 'ALB', 'AST']
+features_df[decimal_cols] = features_df[decimal_cols].apply(lambda x: round(x, 2), axis=1)#lambda x: 含x的表达式
+
+# 显示带有两位小数的特征表格
 st.table(features_df)
+#st.table(features_df)
 
 
 
