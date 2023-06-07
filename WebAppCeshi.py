@@ -127,7 +127,7 @@ st.table(features_df)
 if st.button('Predict'):
     prediction = predict_quality(model, features_df)
     st.write("the probability of Readmission:")
-    st.success(round(prediction[0], 2))
+    st.success(round(prediction[0], 4))
     explainer = shap.TreeExplainer(model)
     shap_values = explainer.shap_values(features_df)
     shap.force_plot(explainer.expected_value, shap_values[0], features_df, matplotlib=True, show=False)
